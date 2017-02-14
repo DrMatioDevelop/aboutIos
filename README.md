@@ -112,3 +112,33 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
 ```
 
 ## 6. setNeedsLayout
+
+## 7. 手势
+
+## 8. 事件传递响应链
+[参考链接](http://blog.csdn.net/xiaoxiaobukuang/article/details/55046601) <br>
+>ios中能够响应事件的对象都是UIResponder的子类对象 <br>
+>UIEvent 事件对象 ：多点触控  摇一摇  3DTouch <br>
+>UITouch 点击对象 ：用户点击的状态  开始  移动  停止不动  结束  取消5中状态。取消点击只有当程序强制退出或者来电时才会响应<br>
+
+#### 通过点击事件包含在子视图  依次获取处理这个事件的所有视图对象
+``- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event; // recursively calls -pointInside:withEvent:. point is in the receiver's coordinate system`` <br>
+``- (BOOL)pointInside:(CGPoint)point withEvent:(nullable UIEvent *)event; // default returns YES if point is in bounds;``
+#### 通过以上方法事件查找的顺序为  
+> 视图的顺序为 BView  AView  UIView <br>
+> 事件查找顺序 UIStatusBar相关的视图 -> UIWindow -> UIView -> AView  -> BView（系统在事件链传递的过程中一定会遍历所有的子视图判断是否能够响应点击事件）<br>
+> 事件响应顺序 BView -> AView -> UIView -> UIWindow -> UIStatusBar相关的视图 <br>
+
+## 9.断点调试
+[参考地址](http://www.jianshu.com/p/8e9fc9a8ab78) <br>
+1. breakpoint 断点相关的  提示文档 breakpoint help command 可以查看命令 <br>
+    **加断点  代码的某一行**  <br>
+    *``breakpoint set -f xxVC.m -l``  在某个文件的第x行加上一个断点 <br>
+    **加断点  代码的某一类的某个方法**  <br>
+    *``breakpoint set -n "[xxVC method]"`` 在某个文件的第x行加上一个断点 <br>
+    **查看添加的断点**  <br>
+    *``breakpoint list`` <br>
+    **删除断点**   <br>
+    *``breakpoint delete breakpointID`` 删除具体ID断点   断点可以用list命令查看 <br>
+    *``breakpoint delete`` 选择是否删除全部断点 <br>
+ 2. 
