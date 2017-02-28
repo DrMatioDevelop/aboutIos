@@ -7,7 +7,7 @@ MarkDown 常用快捷键
 >2.任意的__在位子下面都会变为二阶标题<br>
 >3.如果不空行 那上面的文字会收到下面格式的影响 <br>
 >4.区块引用使用 > 同样能进行嵌套 >> <br>
->5.+ * - 用于类表  同时*号还能用于缩进 <br>
+>5.+ * - 用于列表  同时*号还能用于缩进 <br>
 >6.三个以上的* - - 可以作为分隔线 <br>
 >7.链接提示文字用[]  链接具体地址用() <br>
 >8.在文字的两端使用 * 或者 _ 会强调文字   两个* 或者两个_ 会加粗文字<br>
@@ -94,6 +94,7 @@ NSArray     *temp = [objectArray filteredArrayUsingPredicate:predicateStr];
 6.正则表达式: `MATCHES`
 
 ### 通过正则表达式截取字符串
+
 ```
 //组装一个字符串，需要把里面的网址解析出来
 NSString *urlString=@"http://xxxxmall.com/membershare/mine?memberId=24530";
@@ -110,6 +111,46 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
 }
 }
 ```
+
+
+## 补充正则表达式相关
+* 1.字符分为普通字符
+* 2.非打印字符：\n， \f， \t， \v
+* 3.特殊字符： $字符串结尾，  （），  *，[ ],
+* 4.限定符
+
+**元字符**
+* .  匹配除换行符外的任意字符
+* ^  字符串开始
+* $  字符串结束
+* \w 字母，数字，下划线，汉字     反义为\W
+* \s 任意的空白符               反义为\S
+* \d 匹配任意的数字 只是一个数字  反义为\D
+* \b 任意的单词开始或结束        反义为\B
+
+**限定符**
+* `*` 重复0次或者更多次 
+* `+` 重复1次或者更多次
+* ？重复0次或者一次
+* {n}  重复n次或者更多次
+* {n,} 重复n次或者更多次
+* {n,m} 重复n-m次
+
+**分歧条件**
+* 用|进行分区  执行为从左到右
+* 或者的意思 如ip地址 (25[0-5]|2[0-4]\d|(1\d{2}|[1-9]?\d))标示其中的一个小段 
+* (?:exp) 不补货匹配的文本 也不给此分组分配组号  ((?:(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d))))
+**此处需要举个栗子**
+
+
+**懒惰与贪婪**
+  待匹配`aaaabaabb`,  需要匹配`axb` x用下面的几种方式代替
+* *？ 重复任意次， 但尽可能少重复
+* +？ 重复1次或者多次，但尽可能少重复
+* ？？    重复0次或者1次
+* {n，}？ 重复n次以上
+* {n,m}? 重复n到m此
+
 
 ## 6. setNeedsLayout
 
@@ -141,4 +182,14 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
     **删除断点**   <br>
     *``breakpoint delete breakpointID`` 删除具体ID断点   断点可以用list命令查看 <br>
     *``breakpoint delete`` 选择是否删除全部断点 <br>
- 2. 
+ 2. watchpoint 可以观察值的具体变化 <br>
+ 3. process 暂不知道啥用 <br>
+ 4. thred      <br>
+ 5. call  修改属性    <br>
+    `` po [self.view setBackgroundColor:[UIColor redColor]]``  <br>
+    ``call [self.view setBackgroundColor:[UIColor redColor]]`` <br>
+ 6. image  展示崩溃   可以用image help产看帮助  <br>
+   ``image lookup --address 0x0000000104147544``
+
+
+## 10. 多线程  网络请求  GCD
