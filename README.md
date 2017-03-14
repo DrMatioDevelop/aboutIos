@@ -45,10 +45,10 @@ MarkDown 常用快捷键
 [警告查询](http://fuckingclangwarnings.com/)
 
 ``
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-//这里写出现警告的代码
-#pragma clang diagnostic pop``
+* #pragma clang diagnostic push
+* #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+* //这里写出现警告的代码
+* #pragma clang diagnostic pop``
 
 * * *
 ## 3.const修饰
@@ -193,3 +193,9 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
 
 
 ## 10. 多线程  网络请求  GCD
+
+## 11 命令行工具
+
+* which 命令的位置 <br>
+>  [卸载pod](http://blog.csdn.net/qq_18670721/article/details/50432892) <br>
+>  [pod安装遇到问题](http://www.jianshu.com/p/f79cd5256531)  <br>
