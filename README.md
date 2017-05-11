@@ -198,3 +198,19 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
 * which 命令的位置 <br>
 >  [卸载pod](http://blog.csdn.net/qq_18670721/article/details/50432892) <br>
 >  [pod安装遇到问题](http://www.jianshu.com/p/f79cd5256531)  <br>
+
+## 12 组件化
+* pod的podspec文件的配置
+<pre>Pod::Spec.new do |s|
+    s.name         = 'MJRefresh'
+    s.version      = '3.1.12'
+    s.summary      = 'An easy way to use pull-to-refresh'
+    s.homepage     = 'https://github.com/CoderMJLee/MJRefresh'
+    s.license      = 'MIT'
+    s.authors      = {'MJ Lee' => '199109106@qq.com'}
+    s.platform     = :ios, '6.0'
+    s.source       = {:git => 'https://github.com/CoderMJLee/MJRefresh.git', :tag => s.version}
+    s.source_files = 'MJRefresh/**/*.{h,m}'
+    s.resource     = 'MJRefresh/MJRefresh.bundle'
+    s.requires_arc = true
+end</pre>
