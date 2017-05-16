@@ -78,24 +78,24 @@ DKNightVersion 有一个manager用于管理夜间 普通模式的状态；   一
 [参考链接](http://blog.csdn.net/lianbaixue/article/details/10579117) <br>
 
 >基本的语法格式为 <br>
-`` 
+<pre>
 NSPredicate *predicateStr = [NSPredicate predicateWithFormat:@"self > %ld",100];
 NSArray     *temp = [objectArray filteredArrayUsingPredicate:predicateStr];
-``
+</pre>
 <br>
 详细使用参考[NSPredicate](http://blog.csdn.net/lianbaixue/article/details/10579117) <br>
 
 1.比较运算符  `> ,< , == , >=, <=, !=` <br>
 2.范围运算符  `IN, BETWEEN`   <br>
 3.字符串本身:self  <br>
-4.字符串相关: `BEGINSWITH、ENDSWITH、CONTAINS`  [c]不区分大小写  [d]不区分发音符号 音标 [cd]既不区分也不区分 <br>
-* @"name CONTAIN[cd] 'ang'"   //包含某个字符串  并且不区分大小写与发音符号
+4.字符串相关: `BEGINSWITH、ENDSWITH、CONTAINS`,`开始， 结束， 包含`  [c]不区分大小写  [d]不区分发音符号 音标 [cd]既不区分也不区分  `` exm:self CONTAINS[cd] 'sh'``<br>
+``"name CONTAIN[cd] 'ang'"   //包含某个字符串  并且不区分大小写与发音符号``<br>
 5.通配符：`LIKE` <br>
-6.正则表达式: `MATCHES`
+6.正则表达式: `MATCHES` 
 
 ### 通过正则表达式截取字符串
 
-```
+<pre>
 //组装一个字符串，需要把里面的网址解析出来
 NSString *urlString=@"http://xxxxmall.com/membershare/mine?memberId=24530";
 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".*/membershare/mine\\?memberId=(\\d+)" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -110,7 +110,7 @@ NSRange resultRange = [firstMatch rangeAtIndex:1];
 NSLog(@"%@",[urlString substringWithRange:resultRange]);
 }
 }
-```
+</pre>
 
 
 ## 补充正则表达式相关
@@ -212,5 +212,7 @@ NSLog(@"%@",[urlString substringWithRange:resultRange]);
     s.source       = {:git => 'gitsource', :tag => s.version}
     s.source_files = 'Class/**/*.{h,m}'
     s.resource     = 'Class/Class.bundle'
+    s.dependency "JSONKit", "~> 1.4"
+    s.dependency "xxxx", "~> 1.4"     #多个的时候并列使用
     s.requires_arc = true
 end</pre>
